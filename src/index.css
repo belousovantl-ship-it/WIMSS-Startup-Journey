@@ -84,7 +84,7 @@
 
   .site-header {
     background: rgba(var(--brand-navy-rgb), 0.94);
-    border-bottom: 1px solid var(--color-line);
+    border-bottom: 2px solid var(--color-accent);
     backdrop-filter: blur(10px);
   }
 

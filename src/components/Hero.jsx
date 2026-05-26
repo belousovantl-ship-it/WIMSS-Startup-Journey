@@ -4,7 +4,7 @@ import { hero, products } from '../content/siteContent'
 export default function Hero() {
   return (
     <section
-      className="hero-screen relative min-h-[min(92vh,900px)] overflow-hidden border-b border-line"
+      className="hero-screen relative min-h-[min(92vh,900px)] overflow-hidden border-b-2 border-accent"
       style={{ '--hero-image': `url(${heroBackground})` }}
       aria-label="WIMSS — real-time visibility for industrial sites"
     >

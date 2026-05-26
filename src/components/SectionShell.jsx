@@ -2,7 +2,7 @@ export default function SectionShell({ id, index, label, title, lead, children }
   return (
     <section
       id={id}
-      className="scroll-mt-20 border-b border-line py-14 sm:py-16"
+      className="scroll-mt-20 border-b border-accent py-14 sm:py-16"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
