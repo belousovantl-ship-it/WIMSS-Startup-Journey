@@ -2,9 +2,9 @@ import { navSections, siteMeta } from '../content/siteContent'
 
 export default function Header() {
   return (
-    <header className="site-header sticky top-0 z-50">
+    <header className="site-header sticky top-0 z-50 border-b-2 border-accent">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 sm:py-4">
-        <a href="#" className="header-logo-link flex shrink-0 items-center">
+        <a href="#" className="block shrink-0">
           <img
             src="/wimss-logo-header.png"
             alt="WIMSS — Where is my Staff & Stuff"

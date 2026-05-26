@@ -224,7 +224,7 @@ export default function App() {
         </SectionShell>
       </main>
 
-      <footer className="border-t-2 border-accent bg-brand-dark">
+      <footer className="border-t border-line bg-brand-dark">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div>
             <p className="font-semibold text-white/80">WIMSS · {siteMeta.company}</p>
