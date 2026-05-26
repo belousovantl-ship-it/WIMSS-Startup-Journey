@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+
+/* Sampled from public/wimss-logo.png — dominant logo background / edge navy */
+:root {
+  --brand-navy: #11213a;
+  --brand-navy-rgb: 17, 33, 58;
+  --brand-navy-light: #172f4f;
+  --brand-navy-dark: #0a1526;
+  --brand-navy-muted: #1c3556;
+  --brand-navy-panel: #0d1a2e;
+
+  --color-accent: #b45210;
+  --color-accent-soft: #d46a1f;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-line-strong: rgba(180, 82, 16, 0.45);
+
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@theme {
+  --color-brand: #11213a;
+  --color-brand-light: #172f4f;
+  --color-brand-muted: #1c3556;
+  --color-brand-dark: #0a1526;
+  --color-accent: #b45210;
+  --color-accent-soft: #d46a1f;
+  --color-surface: #0d1a2e;
+  --color-panel: #0a1526;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-line-strong: rgba(180, 82, 16, 0.45);
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--brand-navy);
+    color: white;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
+}
+
+@layer components {
+  /* Full hero: industrial photo + sampled navy overlays (no flat-only gradient) */
+  .hero-screen {
+    background-color: var(--brand-navy);
+    background-image:
+      linear-gradient(
+        100deg,
+        rgba(var(--brand-navy-rgb), 0.9) 0%,
+        rgba(var(--brand-navy-rgb), 0.82) 38%,
+        rgba(var(--brand-navy-rgb), 0.68) 62%,
+        rgba(var(--brand-navy-rgb), 0.52) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(var(--brand-navy-rgb), 0.88) 0%,
+        rgba(var(--brand-navy-rgb), 0.4) 42%,
+        transparent 70%
+      ),
+      var(--hero-image);
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+  }
+
+  .hero-modules {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(var(--brand-navy-rgb), 0.72);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  .site-header {
+    background: rgba(var(--brand-navy-rgb), 0.94);
+    border-bottom: 1px solid var(--color-line);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Cropped logo asset — sized by width so it reads clearly in the nav */
+  .header-logo {
+    display: block;
+    width: 9rem;
+    height: auto;
+  }
+
+  @media (min-width: 640px) {
+    .header-logo {
+      width: 10.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header-logo {
+      width: 11.5rem;
+    }
+  }
+}
