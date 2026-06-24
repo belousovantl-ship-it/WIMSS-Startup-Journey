@@ -1,6 +1,24 @@
 import { navSections, siteMeta } from '../content/siteContent'
+import useActiveSection from '../hooks/useActiveSection'
+
+function NavLink({ href, label, isActive, accent = false }) {
+  return (
+    <a
+      href={href}
+      className={`nav-link ${isActive ? 'nav-link--active' : ''} ${
+        accent ? 'nav-link--accent' : ''
+      }`}
+      aria-current={isActive ? 'true' : undefined}
+    >
+      {label}
+    </a>
+  )
+}
 
 export default function Header() {
+  const sectionIds = navSections.map((item) => item.id)
+  const activeId = useActiveSection(sectionIds)
+
   return (
     <header className="site-header sticky top-0 z-50 border-b-2 border-accent">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 sm:py-4">
@@ -15,31 +33,23 @@ export default function Header() {
         </a>
 
         <nav
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden flex-1 items-center justify-center gap-0.5 lg:flex xl:gap-1"
           aria-label="Page sections"
         >
           {navSections.map((item) => (
-            <a
+            <NavLink
               key={item.id}
               href={`#${item.id}`}
-              className="rounded px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/60 transition hover:bg-white/5 hover:text-white"
-            >
-              {item.label}
-            </a>
+              label={item.label}
+              isActive={activeId === item.id}
+              accent={item.id === 'updates'}
+            />
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <span className="hidden font-mono text-[10px] uppercase tracking-widest text-white/40 sm:inline">
-            {siteMeta.program}
-          </span>
-          <a
-            href="#updates"
-            className="border border-accent/60 bg-accent/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-accent-soft transition hover:bg-accent/20"
-          >
-            Updates
-          </a>
-        </div>
+        <span className="hidden shrink-0 font-mono text-[10px] uppercase tracking-widest text-white/40 xl:inline">
+          {siteMeta.program}
+        </span>
       </div>
     </header>
   )

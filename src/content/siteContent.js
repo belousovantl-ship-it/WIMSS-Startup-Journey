@@ -11,35 +11,62 @@ export const siteMeta = {
 }
 
 export const hero = {
-  tagline: 'Real-time operational visibility for more efficient industrial operations.',
+  statusLine:
+    'Real-time operational visibility · Outdoor-first · Industrial intelligence',
+  tagline:
+    'A real-time operational visibility solution for managing assets, workforce and operational flows across large industrial sites.',
   description:
-    'WIMSS helps shipyards, ports, and large construction sites reduce inefficiencies, improve coordination, and make faster operational decisions through real-time visibility of workforce, tools, materials, and equipment.',
-  statusLine: 'RFID RAIN technology · Industrial yards digitalization · Operational visibility',
+    'WIMSS helps shipyards, ports, construction sites and industrial logistics operations reduce search time, operational delays, coordination gaps and hidden costs — while improving resource utilization, safety and decision-making.',
+  valueStatement: ['See more', 'React faster', 'Operate better'],
+}
+
+export const heroModules = {
+  heading: 'Two visibility solutions. One operational picture.',
+  modules: [
+    {
+      id: 'workforce',
+      name: 'WIMSS Workforce',
+      subtitle: 'Workforce and contractor visibility',
+      description:
+        'Real-time visibility of employees and contractors, including verified presence, zone location, access validation and unauthorized-access alerts.',
+    },
+    {
+      id: 'assets',
+      name: 'WIMSS Assets',
+      subtitle: 'Asset and material visibility',
+      description:
+        'Real-time visibility of tools, equipment and materials, including asset location, movement history, fast search and automated inventory monitoring.',
+    },
+  ],
 }
 
 export const products = [
   {
     id: 'workforce',
     name: 'WIMSS Workforce',
-    summary:
-      'Real-time workforce visibility, verified presence, identity control, and zone access compliance for mixed contractor and internal teams.',
+    subtitle: 'Workforce and contractor visibility',
+    imageAlt:
+      'Workers in PPE entering an industrial site while a supervisor monitors activity on a tablet.',
     capabilities: [
-      'Identity verification at entry and exit points',
-      'Live site overview — who is on site, where, and for how long',
-      'Unauthorized access detection in restricted zones',
-      'Real-time alerts and exportable compliance records',
+      'Verify who is on site',
+      'See workforce presence by operational zone',
+      'Create virtual geofences and restricted areas',
+      'Validate identity and access permissions',
+      'Receive real-time zone alerts and export compliance reports',
     ],
   },
   {
     id: 'assets',
     name: 'WIMSS Assets',
-    summary:
-      'Real-time visibility, movement tracking, instant search, and automated inventory control for tools, equipment, pallets, and material batches across large outdoor and indoor yards.',
+    subtitle: 'Asset and material visibility',
+    imageAlt:
+      'Shipyard yard with pallets, crates, industrial components and a forklift among dockyard materials.',
     capabilities: [
-      'Real-time asset location and movement history',
-      'Zone-level inventory visibility without manual counting',
-      'Missing or misplaced asset detection',
-      'Integration layer between physical flow and ERP / planning systems',
+      'Locate assets, equipment and materials',
+      'Track movement between operational zones',
+      'Create virtual storage and operational geofences',
+      'Detect missing, misplaced or unauthorized asset movement',
+      'Automate zone-level inventory monitoring and reports',
     ],
   },
 ]
@@ -48,77 +75,275 @@ export const sections = {
   problem: {
     id: 'problem',
     label: 'Problem',
-    title: 'Planning systems know the plan — not what is happening on site',
-    lead: 'Large industrial yards run on fragmented visibility. Digital systems describe expected flow; physical operations are coordinated manually.',
+    titleLead:
+      'When operational reality is not visible in real time, industrial sites lose',
+    titleHighlight: 'time, money and control.',
+    intro:
+      'A large industrial site with 5,000–10,000 trackable assets may face €1–3 million in hidden annual losses through searching, delays, manual coordination, duplicate purchases, idle equipment and inefficient resource use.',
+    introHighlight: '€1–3 million',
     points: [
       {
-        title: 'Workforce uncertainty',
-        body: 'Access cards can be shared. It is unclear who actually entered the site, who is still “checked in” after leaving, and who is in restricted zones right now.',
+        id: 'assets',
+        imageKey: 'assets',
+        title: 'Asset and material uncertainty',
+        body: 'Teams lose time searching for tools, equipment and materials, re-checking deliveries and confirming availability. Missing or misplaced resources cause delays, unnecessary rentals and duplicate purchases.',
       },
       {
-        title: 'Asset and material drift',
-        body: 'Materials are not where they are expected. Teams lose time searching, re-checking deliveries, and coordinating via radio, paper, and spreadsheets.',
+        id: 'workforce',
+        imageKey: 'workforce',
+        title: 'Workforce and access uncertainty',
+        body: 'Companies cannot always verify who is on site, who entered restricted areas, whether someone has already left or how contractors move across operational zones. This creates safety, compliance and coordination risks.',
       },
       {
-        title: 'The visibility gap',
-        body: 'ERP and planning define what should happen. What happens in the yard is updated manually afterwards — creating delays, compliance risk, and reactive operations.',
+        id: 'reactive',
+        imageKey: 'reactive',
+        title: 'Reactive operations',
+        body: 'Managers receive incomplete or delayed information and react late to missing resources, logistics bottlenecks, congestion, safety deviations and changing operational conditions.',
       },
     ],
+    impact: {
+      heading: 'Hidden operational impact',
+      subheading:
+        'Small daily visibility gaps accumulate into significant annual cost and operational risk.',
+      primaryMetrics: [
+        {
+          value: '€1–3M',
+          label: 'Hidden annual impact',
+          support: 'Illustrative annual impact per large industrial site',
+          featured: true,
+        },
+        {
+          value: '5–10 MIN',
+          label: 'Lost per worker, every day',
+          support:
+            'Searching and re-checking tools, materials and equipment',
+        },
+        {
+          value: '10–30%',
+          label: 'Equipment utilization loss',
+          support: 'Idle or underused rented equipment',
+        },
+      ],
+      secondaryMetrics: [
+        {
+          value: '1–3%',
+          label: 'Asset loss and write-offs per year',
+        },
+        {
+          value: '2–5%',
+          label: 'Duplicate and unnecessary purchases per year',
+        },
+        {
+          value: '5–15%',
+          label:
+            'Extra operational effort from manual inventory and re-checking',
+        },
+      ],
+      disclaimer:
+        'Illustrative industry benchmark ranges. Actual impact depends on site size, asset base, workforce and operational processes.',
+    },
+    environmental: {
+      heading: 'Environmental impact',
+      body: 'Limited operational visibility leads to unnecessary vehicle movement, repeated logistics operations, inefficient material handling and wasted resources.',
+      items: [
+        'Unnecessary vehicle movement',
+        'Repeated logistics',
+        'Inefficient material handling',
+        'Wasted resources',
+      ],
+    },
   },
 
   solution: {
     id: 'solution',
     label: 'Solution',
-    title: 'A real-time operational visibility layer for industrial sites',
-    lead: 'WIMSS connects physical movement with live dashboards — without replacing existing ERP or IT landscapes.',
-    highlights: [
-      'Passive battery-free RAIN RFID tags on people and assets',
-      'Flexible reader setup: gates, zones, vehicle-mounted, and handheld',
-      'Minimal fixed infrastructure — fast pilot deployment, scalable to full site',
-      'Web dashboards with map and list views, alerts, and audit-ready history',
-      'AI-assisted methods to improve data reliability in metal-heavy environments',
+    intro: [
+      'WIMSS collects real-time location and presence data from tagged assets, materials and people and brings it together in one operational view of the site. Managers can see what is where, who is on site, how resources move between operational zones and where attention is needed.',
+      'WIMSS provides live maps, alerts, movement history and operational reports while working alongside existing ERP and IT systems rather than replacing them.',
     ],
+    howItWorks: {
+      heading: 'How WIMSS works',
+    },
+    modulesHeading: 'Core use cases',
+    modulesLead: 'One operational picture across workforce and assets.',
+    whyWimss: {
+      heading: 'Why WIMSS',
+      lead: 'Built for fast deployment, industrial reliability and operational scalability.',
+      features: [
+        {
+          title: 'Battery-free RAIN RFID tags',
+          detail:
+            'no charging or battery replacement for long-term industrial use',
+        },
+        {
+          title: 'Flexible reader setup',
+          detail:
+            'fixed, handheld and vehicle-mounted readers for gates, zones and mobile operations',
+        },
+        {
+          title: 'Minimal fixed infrastructure',
+          detail: 'fast pilots and straightforward full-site scaling',
+        },
+        {
+          title: 'Live web dashboards',
+          detail:
+            'maps, alerts, movement history and reports in one interface',
+        },
+        {
+          title: 'Designed for metal-heavy environments',
+          detail:
+            'AI-assisted methods improve data reliability in challenging conditions',
+        },
+      ],
+    },
   },
 
   stage: {
     id: 'stage',
     label: 'Stage',
-    title: 'Pilot validation with industrial customers',
-    lead: 'We are past concept — building and testing in real shipyard and construction environments.',
-    items: [
-      { term: 'Stage', value: 'Pre-seed / early commercial pilots' },
-      { term: 'Focus', value: 'Workforce and asset visibility in Nordic shipyards & yards' },
-      { term: 'Approach', value: 'Start small · validate fast · scale with confidence' },
-      { term: 'Entity', value: 'InnoTrain Oy (Finland)' },
+    title: 'Technology validated — now preparing for industrial pilots',
+    intro:
+      'WIMSS is beyond the concept stage. The core RAIN RFID-based technology has been validated through two proof-of-concept projects in real industrial environments. The current focus is productizing the solution, validating priority customer use cases and preparing the next industrial pilots.',
+    indicators: [
+      {
+        id: 'current-stage',
+        label: 'Current stage',
+        value: 'Working prototype / pre-pilot',
+        detail:
+          'Core technology validated; product and customer-specific use cases are being refined.',
+      },
+      {
+        id: 'trl',
+        label: 'Technology readiness',
+        value: 'Estimated TRL 6–7',
+        detail:
+          'System prototype demonstrated and tested in relevant industrial environments.',
+      },
+      {
+        id: 'validation',
+        label: 'Validation completed',
+        value: '2 Proofs of Concept',
+        detail:
+          'Technology and core operating principles tested in real-world conditions.',
+      },
+      {
+        id: 'commercial',
+        label: 'Commercial status',
+        value: 'Customer validation and pilot preparation',
+        detail:
+          'Priority use cases, pilot scope and commercial model are currently being validated.',
+      },
     ],
+    journey: [
+      { id: 'concept', label: 'Concept', status: 'completed' },
+      { id: 'poc1', label: 'Proof of Concept 1', status: 'completed' },
+      { id: 'poc2', label: 'Proof of Concept 2', status: 'completed' },
+      {
+        id: 'validated',
+        label: 'Technology validated',
+        status: 'completed',
+      },
+      {
+        id: 'productization',
+        label: 'Productization & customer validation',
+        status: 'current',
+      },
+      { id: 'pilot', label: 'Next: industrial pilot', status: 'next' },
+    ],
+    currentFocus: {
+      heading: 'Current focus',
+      items: [
+        'Validate the highest-value Workforce and Assets use cases',
+        'Define pilot scope and measurable success criteria',
+        'Refine product requirements with industrial customers',
+        'Prepare pilot deployment and commercial pricing',
+      ],
+    },
   },
 
   traction: {
     id: 'traction',
     label: 'Traction',
-    title: 'Active industrial engagement',
-    lead: 'Dashboard prototypes and pilot concepts developed with operators in shipbuilding and heavy industry.',
-    items: [
+    title: 'Active customer validation and industrial engagement',
+    intro:
+      'With the underlying technology already validated, WIMSS is now building market traction through active shipyard discussions, customer-facing product demonstrations and upcoming real-world testing.',
+    blocks: [
       {
-        metric: 'Rauma Marine Construction (RMC)',
-        detail:
-          'WIMSS Workforce pilot concept: identity verification at gates and unauthorized access monitoring in defined zones.',
+        id: 'rmc',
+        title: 'RMC — Customer validation',
+        signal: 'Dashboard and reporting demo requested and shared',
+        details: [
+          'Rauma Marine Constructions has reviewed the WIMSS Workforce concept. Current discussions focus on verified workforce presence, contractor visibility, identity validation, restricted-zone access and operational reporting.',
+        ],
+        status: 'Active discussion',
       },
       {
-        metric: 'Meyer Turku / MERiON',
-        detail:
-          'WIMSS Assets operational visibility aligned with intelligent shipyard logistics — material flow, bottlenecks, and outdoor yard tracking.',
+        id: 'meyer',
+        title: 'Meyer Turku — Strategic fit',
+        signal: 'WIMSS identified as a good fit for MeriOn Future Operations',
+        details: [
+          'Current discussions focus on asset visibility, material flow, shipyard logistics, outdoor yard operations and the potential role of WIMSS in future intelligent shipyard operations.',
+        ],
+        status: 'Strategic fit confirmed',
+        link: {
+          label: 'About MERiON',
+          href: 'https://www.meyerturku.fi/en/news-publications/news/meyer-turkus-new-merion-program-guides-the-maritime-industry-amid-upheavals/',
+        },
       },
       {
-        metric: 'Product readiness',
-        detail:
-          'End-to-end dashboard flows built for live site overview, zone drill-down, worker traceability, and asset search.',
+        id: 'west-avia',
+        title: 'West Avia Lab Day — Real-world demonstration',
+        signal: 'Invited to demonstrate WIMSS at Seinäjoki Airport',
+        details: [
+          'WIMSS will be presented and tested during the West Avia Lab Day on 19 August 2026 at Seinäjoki Airport. The planned demonstration explores the use of a drone-mounted WIMSS reader for scanning tagged assets and transmitting location data into the operational dashboard.',
+          'The event also provides access to the West Avia business area, development partners and potential industrial test environments.',
+        ],
+        status: 'Upcoming test & demonstration',
+        link: {
+          label: 'Event page',
+          href: 'https://tapahtumat.intoseinajoki.fi/labrapaiva',
+        },
       },
       {
-        metric: 'Next',
-        detail: '[Update weekly] Pilot scope, tagged assets/workers, deployment timeline.',
+        id: 'product',
+        title: 'Product readiness',
+        signal: 'Customer-facing Workforce and Assets prototypes',
+        details: [
+          'Interactive product flows have been developed for live site overview, zone drill-down, workforce and asset visibility, alerts, movement history, search and exportable operational reports.',
+        ],
+        status: 'Demo ready',
       },
     ],
+    externalRecognition: {
+      heading: 'External recognition',
+      items: [
+        {
+          title: "Visa She's Next",
+          signal: 'Selected as a Top 10 finalist from 230 applications',
+        },
+      ],
+    },
+    industryOutreach: {
+      heading: 'Customer discovery & industry outreach',
+      status: 'Outreach in progress',
+      text: 'WIMSS is conducting targeted customer discovery across the Finnish maritime sector. Validation surveys have been shared with Turku Repair Yard and SATA Shipbuilding to assess operational challenges related to asset visibility, yard logistics, material flow and workforce coordination.',
+      secondaryText:
+        'WIMSS has also been presented to maritime-industry stakeholders through targeted meetings and the Meriverkostot networking event in Naantali.',
+      link: {
+        label: 'About Meriverkostot',
+        href: 'https://www.naantali.fi/fi/tyo-ja-yrittaminen/yrittajan-palvelut/meriverkostot',
+      },
+    },
+    nextMilestone: {
+      heading: 'Next milestone',
+      summary:
+        'Convert active customer discussions and practical demonstrations into a clearly scoped industrial pilot with agreed use cases, measurable success criteria, deployment plan and commercial terms.',
+      points: [
+        'Confirm pilot customer and site',
+        'Agree pilot scope and success metrics',
+        'Validate pricing and commercial model',
+      ],
+    },
   },
 
   market: {

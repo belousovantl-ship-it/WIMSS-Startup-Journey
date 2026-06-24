@@ -1,20 +1,12 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
-import ProductPanels from './components/ProductPanels'
+import ProblemSection from './components/ProblemSection'
+import SolutionSection from './components/SolutionSection'
+import StageSection from './components/StageSection'
+import TractionSection from './components/TractionSection'
 import SectionShell from './components/SectionShell'
 import WeeklyUpdates from './components/WeeklyUpdates'
 import { sections, siteMeta } from './content/siteContent'
-
-function DataRow({ term, value }) {
-  return (
-    <div className="flex flex-col gap-1 border-b border-line py-4 sm:flex-row sm:items-baseline sm:justify-between">
-      <dt className="font-mono text-[11px] uppercase tracking-wider text-white/45">
-        {term}
-      </dt>
-      <dd className="text-sm text-white/85 sm:max-w-md sm:text-right">{value}</dd>
-    </div>
-  )
-}
 
 export default function App() {
   const s = sections
@@ -25,84 +17,13 @@ export default function App() {
       <main>
         <Hero />
 
-        <SectionShell
-          id={s.problem.id}
-          index={1}
-          label={s.problem.label}
-          title={s.problem.title}
-          lead={s.problem.lead}
-        >
-          <div className="grid gap-px border border-line bg-line lg:grid-cols-3">
-            {s.problem.points.map((point) => (
-              <div key={point.title} className="bg-panel p-6">
-                <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-accent">
-                  {point.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-white/70">
-                  {point.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </SectionShell>
+        <ProblemSection />
 
-        <SectionShell
-          id={s.solution.id}
-          index={2}
-          label={s.solution.label}
-          title={s.solution.title}
-          lead={s.solution.lead}
-        >
-          <ProductPanels />
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-            {s.solution.highlights.map((item) => (
-              <li
-                key={item}
-                className="border border-line bg-brand-light/30 px-4 py-3 text-sm text-white/75"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </SectionShell>
+        <SolutionSection />
 
-        <SectionShell
-          id={s.stage.id}
-          index={3}
-          label={s.stage.label}
-          title={s.stage.title}
-          lead={s.stage.lead}
-        >
-          <dl className="border border-line bg-panel px-5">
-            {s.stage.items.map((item) => (
-              <DataRow key={item.term} term={item.term} value={item.value} />
-            ))}
-          </dl>
-        </SectionShell>
+        <StageSection stage={s.stage} />
 
-        <SectionShell
-          id={s.traction.id}
-          index={4}
-          label={s.traction.label}
-          title={s.traction.title}
-          lead={s.traction.lead}
-        >
-          <div className="space-y-px border border-line bg-line">
-            {s.traction.items.map((item) => (
-              <div
-                key={item.metric}
-                className="grid gap-2 bg-panel px-5 py-4 sm:grid-cols-[220px_1fr] sm:gap-6"
-              >
-                <span className="font-mono text-xs uppercase tracking-wider text-accent">
-                  {item.metric}
-                </span>
-                <p className="text-sm leading-relaxed text-white/75">
-                  {item.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-        </SectionShell>
+        <TractionSection traction={s.traction} />
 
         <SectionShell
           id={s.market.id}
