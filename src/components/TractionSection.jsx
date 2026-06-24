@@ -1,35 +1,178 @@
-function ContextLink({ link }) {
-  if (!link) return null
+function OrganisationName({ organisation }) {
+  if (typeof organisation === 'string') {
+    return <span className="traction-row__organisation">{organisation}</span>
+  }
 
   return (
     <a
-      href={link.href}
-      className="traction-context-link"
+      href={organisation.href}
+      className="traction-row__organisation traction-row__link"
       target="_blank"
       rel="noopener noreferrer"
     >
-      {link.label}
-      <span className="traction-context-link__arrow" aria-hidden="true">
+      {organisation.text}
+      <span className="traction-row__link-arrow" aria-hidden="true">
         ↗
       </span>
     </a>
   )
 }
 
-function TractionBlock({ block }) {
-  return (
-    <article className="traction-block">
-      <div className="traction-block__header">
-        <h3 className="traction-block__title">{block.title}</h3>
-        <span className="traction-block__status">{block.status}</span>
+function OrganisationBlock({ organisation }) {
+  if (Array.isArray(organisation)) {
+    return (
+      <div className="traction-row__org-list">
+        {organisation.map((name) => (
+          <span key={name} className="traction-row__organisation">
+            {name}
+          </span>
+        ))}
       </div>
-      <p className="traction-block__signal">{block.signal}</p>
-      {block.details.map((paragraph) => (
-        <p key={paragraph} className="traction-block__detail">
-          {paragraph}
-        </p>
+    )
+  }
+
+  return <OrganisationName organisation={organisation} />
+}
+
+function ContactDetails({ contact }) {
+  if (!contact) return null
+
+  const lines = Array.isArray(contact) ? contact : [contact]
+
+  return (
+    <div className="traction-row__contact">
+      {lines.map((line) => (
+        <span key={line} className="traction-row__contact-line">
+          {line}
+        </span>
       ))}
-      <ContextLink link={block.link} />
+    </div>
+  )
+}
+
+function TractionRow({ row, columns }) {
+  return (
+    <article className="traction-row">
+      <div className="traction-row__cell traction-row__cell--category">
+        <span className="traction-row__mobile-label">{columns.category}</span>
+        <span className="traction-row__category">{row.category}</span>
+      </div>
+      <div className="traction-row__cell traction-row__cell--organisation">
+        <span className="traction-row__mobile-label">
+          {columns.organisation}
+        </span>
+        <div className="traction-row__org-block">
+          <OrganisationBlock organisation={row.organisation} />
+          {row.organisationNote ? (
+            <p className="traction-row__org-note">{row.organisationNote}</p>
+          ) : null}
+          <ContactDetails contact={row.contact} />
+        </div>
+      </div>
+      <div className="traction-row__cell traction-row__cell--current-status">
+        <span className="traction-row__mobile-label">
+          {columns.currentStatus}
+        </span>
+        {Array.isArray(row.currentStatus) ? (
+          row.currentStatus.map((paragraph, index) => (
+            <p
+              key={paragraph}
+              className={
+                index > 0
+                  ? 'traction-row__body traction-row__body--paragraph'
+                  : 'traction-row__body'
+              }
+            >
+              {paragraph}
+            </p>
+          ))
+        ) : (
+          <p className="traction-row__body">{row.currentStatus}</p>
+        )}
+        {row.statusNotes?.map((note) => (
+          <p key={note} className="traction-row__status-note">
+            {note}
+          </p>
+        ))}
+        {row.discoveryContacts ? (
+          <div className="traction-row__discovery">
+            <p className="traction-row__discovery-heading">
+              {row.discoveryContacts.heading}
+            </p>
+            <ul className="traction-row__discovery-list">
+              {row.discoveryContacts.items.map((item) => (
+                <li key={item} className="traction-row__discovery-item">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+      <div className="traction-row__cell traction-row__cell--next-step">
+        <span className="traction-row__mobile-label">{columns.nextStep}</span>
+        <p className="traction-row__body">{row.nextStep}</p>
+      </div>
+      <div className="traction-row__cell traction-row__cell--status">
+        <span className="traction-row__mobile-label">{columns.status}</span>
+        <span className="traction-row__status-badge">{row.statusTag}</span>
+      </div>
+    </article>
+  )
+}
+
+function MarketAccessRow({ row, columns }) {
+  return (
+    <article className="traction-row traction-row--market">
+      <div className="traction-row__cell traction-row__cell--category traction-row__cell--market-category">
+        <span className="traction-row__mobile-label">{columns.category}</span>
+        <span className="traction-row__category">{row.category}</span>
+      </div>
+
+      <div className="traction-row__market-body">
+        {row.marketSegments.map((segment, index) => (
+          <div
+            key={segment.statusTag}
+            className={
+              index > 0
+                ? 'traction-row__market-segment traction-row__market-segment--divided'
+                : 'traction-row__market-segment'
+            }
+          >
+            <div className="traction-row__cell traction-row__cell--organisation">
+              <span className="traction-row__mobile-label">
+                {columns.organisation}
+              </span>
+              <div className="traction-row__org-block">
+                <span className="traction-row__organisation">
+                  {segment.organisation}
+                </span>
+                <ContactDetails contact={segment.contact} />
+              </div>
+            </div>
+            <div className="traction-row__cell traction-row__cell--current-status">
+              <span className="traction-row__mobile-label">
+                {columns.currentStatus}
+              </span>
+              <p className="traction-row__body">{segment.currentStatus}</p>
+            </div>
+            <div className="traction-row__cell traction-row__cell--next-step">
+              <span className="traction-row__mobile-label">
+                {columns.nextStep}
+              </span>
+              <p className="traction-row__body">{segment.nextStep}</p>
+            </div>
+            <div className="traction-row__cell traction-row__cell--status">
+              <span className="traction-row__mobile-label">
+                {columns.status}
+              </span>
+              <span className="traction-row__status-badge">
+                {segment.statusTag}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
     </article>
   )
 }
@@ -50,65 +193,83 @@ export default function TractionSection({ traction }) {
         </header>
 
         <div className="traction-section__body">
-          <div className="traction-grid">
-            {traction.blocks.map((block) => (
-              <TractionBlock key={block.id} block={block} />
+          {traction.demoNote ? (
+            <p className="traction-section__demo-note">{traction.demoNote}</p>
+          ) : null}
+
+          <ul className="traction-pipeline" aria-label="Pipeline summary">
+            {traction.pipelineSummary.map((item) => (
+              <li key={item} className="traction-pipeline__item">
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <section
-            className="traction-recognition"
-            aria-label="External recognition"
+          <div
+            className="traction-overview"
+            role="table"
+            aria-label="Traction overview"
           >
-            <h3 className="traction-recognition__heading">
-              {traction.externalRecognition.heading}
-            </h3>
-            <div className="traction-recognition__items">
-              {traction.externalRecognition.items.map((item) => (
-                <div key={item.title} className="traction-recognition__item">
-                  <p className="traction-recognition__title">{item.title}</p>
-                  <p className="traction-recognition__signal">{item.signal}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section
-            className="traction-outreach"
-            aria-label="Customer discovery and industry outreach"
-          >
-            <div className="traction-outreach__header">
-              <h3 className="traction-outreach__heading">
-                {traction.industryOutreach.heading}
-              </h3>
-              <span className="traction-outreach__status">
-                {traction.industryOutreach.status}
+            <div className="traction-overview__header" role="row">
+              <span
+                className="traction-overview__col traction-overview__col--category"
+                role="columnheader"
+              >
+                {traction.columns.category}
+              </span>
+              <span
+                className="traction-overview__col traction-overview__col--organisation"
+                role="columnheader"
+              >
+                {traction.columns.organisation}
+              </span>
+              <span
+                className="traction-overview__col traction-overview__col--current-status"
+                role="columnheader"
+              >
+                {traction.columns.currentStatus}
+              </span>
+              <span
+                className="traction-overview__col traction-overview__col--next-step"
+                role="columnheader"
+              >
+                {traction.columns.nextStep}
+              </span>
+              <span
+                className="traction-overview__col traction-overview__col--status"
+                role="columnheader"
+              >
+                {traction.columns.status}
               </span>
             </div>
-            <p className="traction-outreach__text">
-              {traction.industryOutreach.text}
-            </p>
-            <p className="traction-outreach__text traction-outreach__text--secondary">
-              {traction.industryOutreach.secondaryText}
-            </p>
-            <ContextLink link={traction.industryOutreach.link} />
-          </section>
 
-          <section className="traction-milestone" aria-label="Next milestone">
-            <h3 className="traction-milestone__heading">
-              {traction.nextMilestone.heading}
-            </h3>
-            <p className="traction-milestone__summary">
-              {traction.nextMilestone.summary}
-            </p>
-            <ul className="traction-milestone__list">
-              {traction.nextMilestone.points.map((point) => (
-                <li key={point} className="traction-milestone__item">
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </section>
+            <div className="traction-overview__rows" role="rowgroup">
+              {traction.rows.map((row) =>
+                row.marketSegments ? (
+                  <MarketAccessRow
+                    key={row.id}
+                    row={row}
+                    columns={traction.columns}
+                  />
+                ) : (
+                  <TractionRow
+                    key={row.id}
+                    row={row}
+                    columns={traction.columns}
+                  />
+                ),
+              )}
+            </div>
+          </div>
+
+          <p className="traction-section__milestone">
+            <span className="traction-section__milestone-label">
+              Next milestone
+            </span>
+            <span className="traction-section__milestone-text">
+              {traction.nextMilestone}
+            </span>
+          </p>
         </div>
       </div>
     </section>

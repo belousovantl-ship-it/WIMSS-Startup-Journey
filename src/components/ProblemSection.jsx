@@ -1,57 +1,22 @@
 import { sections } from '../content/siteContent'
-import { IconEnvironmental } from './problem/ProblemIcons'
-import { pointIcons } from './problem/ProblemIconMaps'
-import { problemPointImages } from './problem/problemPointImages'
+import EnvironmentalCostIllustration from './problem/EnvironmentalCostIllustration'
+import problemPanoramic from '../assets/problem/busy-industrial-site-in-motion.png'
 
-function ProblemIssueCard({ point }) {
-  const Icon = pointIcons[point.title]
-  const image = problemPointImages[point.imageKey]
-
+function ImpactConnector({ label }) {
   return (
-    <article className="problem-issue-card">
-      <img
-        src={image}
-        alt=""
-        className={`problem-issue-card__image${
-          point.imageKey === 'workforce'
-            ? ' problem-issue-card__image--workforce'
-            : ''
-        }`}
-        loading="lazy"
-      />
-      <div className="problem-issue-card__overlay" aria-hidden="true" />
-      <div className="problem-issue-card__content">
-        {Icon && (
-          <div className="problem-issue-card__icon">
-            <Icon className="h-5 w-5" />
-          </div>
-        )}
-        <h3 className="problem-issue-card__title">{point.title}</h3>
-        <p className="problem-issue-card__body">{point.body}</p>
-      </div>
-    </article>
+    <div className="problem-impact-connector">
+      <div className="problem-impact-connector__line" aria-hidden="true" />
+      <p className="problem-impact-connector__label">{label}</p>
+    </div>
   )
 }
 
-function PrimaryMetricCard({ metric }) {
+function ImpactFactor({ factor }) {
   return (
-    <article
-      className={`problem-metric-primary ${
-        metric.featured ? 'problem-metric-primary--featured' : ''
-      }`}
-    >
-      <p className="problem-metric-primary__value">{metric.value}</p>
-      <h4 className="problem-metric-primary__label">{metric.label}</h4>
-      <p className="problem-metric-primary__support">{metric.support}</p>
-    </article>
-  )
-}
-
-function SecondaryMetricItem({ metric }) {
-  return (
-    <article className="problem-metric-secondary">
-      <p className="problem-metric-secondary__value">{metric.value}</p>
-      <p className="problem-metric-secondary__label">{metric.label}</p>
+    <article className="problem-impact-factor">
+      <p className="problem-impact-factor__value">{factor.value}</p>
+      <p className="problem-impact-factor__label">{factor.label}</p>
+      <p className="problem-impact-factor__supporting">{factor.supporting}</p>
     </article>
   )
 }
@@ -59,29 +24,19 @@ function SecondaryMetricItem({ metric }) {
 function EnvironmentalStrip({ environmental }) {
   return (
     <section
-      className="problem-environmental-strip"
+      className="problem-environmental"
       aria-label="Environmental impact"
     >
-      <div className="problem-environmental-strip__lead">
-        <div className="problem-environmental-strip__icon">
-          <IconEnvironmental className="h-5 w-5" />
-        </div>
-        <div className="problem-environmental-strip__copy">
-          <h3 className="problem-environmental-strip__title">
-            {environmental.heading}
-          </h3>
-          <p className="problem-environmental-strip__body">
-            {environmental.body}
-          </p>
-        </div>
+      <div className="problem-environmental__visual">
+        <EnvironmentalCostIllustration />
       </div>
-      <ul className="problem-environmental-strip__items">
-        {environmental.items.map((item) => (
-          <li key={item} className="problem-environmental-strip__item">
-            {item}
-          </li>
-        ))}
-      </ul>
+
+      <div className="problem-environmental__copy">
+        <h3 className="problem-environmental__heading">
+          {environmental.heading}
+        </h3>
+        <p className="problem-environmental__body">{environmental.body}</p>
+      </div>
     </section>
   )
 }
@@ -102,6 +57,18 @@ function HighlightText({ text, highlight }) {
   )
 }
 
+function ProblemScenario({ scenario }) {
+  return (
+    <article className="problem-scenario">
+      <p className="problem-scenario__label">
+        {scenario.number} — {scenario.label}
+      </p>
+      <h3 className="problem-scenario__title">{scenario.title}</h3>
+      <p className="problem-scenario__body">{scenario.body}</p>
+    </article>
+  )
+}
+
 export default function ProblemSection() {
   const problem = sections.problem
 
@@ -116,8 +83,14 @@ export default function ProblemSection() {
             01 · {problem.label.toUpperCase()}
           </p>
           <h2 className="problem-headline">
-            {problem.titleLead}{' '}
-            <span className="text-accent-soft">{problem.titleHighlight}</span>
+            {problem.titleHighlight ? (
+              <>
+                {problem.titleLead}{' '}
+                <span className="text-accent-soft">{problem.titleHighlight}</span>
+              </>
+            ) : (
+              problem.titleLead
+            )}
           </h2>
           <p className="problem-intro">
             <HighlightText
@@ -129,12 +102,21 @@ export default function ProblemSection() {
 
         <div className="problem-section">
           <section
-            className="problem-issues"
-            aria-label="Operational uncertainty areas"
+            className="problem-visual"
+            aria-label="Industrial operational pain scenarios"
           >
-            <div className="problem-issues-grid">
-              {problem.points.map((point) => (
-                <ProblemIssueCard key={point.id} point={point} />
+            <div className="problem-panoramic-scroll">
+              <img
+                src={problemPanoramic}
+                alt={problem.panoramicAlt}
+                className="problem-panoramic__image"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="problem-scenarios">
+              {problem.scenarios.map((scenario) => (
+                <ProblemScenario key={scenario.id} scenario={scenario} />
               ))}
             </div>
           </section>
@@ -148,21 +130,28 @@ export default function ProblemSection() {
                 <h3 className="problem-impact-heading">
                   {problem.impact.heading}
                 </h3>
-                <p className="problem-impact-subheading">
-                  {problem.impact.subheading}
-                </p>
               </header>
 
-              <div className="problem-metrics-primary">
-                {problem.impact.primaryMetrics.map((metric) => (
-                  <PrimaryMetricCard key={metric.value} metric={metric} />
-                ))}
-              </div>
+              <div className="problem-impact-body">
+                <div className="problem-impact-outcome">
+                  <p className="problem-impact-outcome__value">
+                    {problem.impact.outcome.value}
+                  </p>
+                  <p className="problem-impact-outcome__label">
+                    {problem.impact.outcome.label}
+                  </p>
+                  <p className="problem-impact-outcome__supporting">
+                    {problem.impact.outcome.supporting}
+                  </p>
+                </div>
 
-              <div className="problem-metrics-secondary">
-                {problem.impact.secondaryMetrics.map((metric) => (
-                  <SecondaryMetricItem key={metric.value} metric={metric} />
-                ))}
+                <ImpactConnector label={problem.impact.connectorLabel} />
+
+                <div className="problem-impact-factors">
+                  {problem.impact.factors.map((factor) => (
+                    <ImpactFactor key={factor.value} factor={factor} />
+                  ))}
+                </div>
               </div>
 
               <p className="problem-disclaimer">{problem.impact.disclaimer}</p>
