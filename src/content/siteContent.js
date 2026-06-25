@@ -655,7 +655,7 @@ export const sections = {
     members: [
       {
         id: 'ren',
-        name: 'Natalia Ren',
+        name: 'Natalia Reen',
         role: 'Founder & Chief Architect',
         profile:
           'Industrial IoT and digital transformation specialist with more than 20 years of experience in connected industrial systems, cloud architecture, RFID and real-time monitoring solutions.',
