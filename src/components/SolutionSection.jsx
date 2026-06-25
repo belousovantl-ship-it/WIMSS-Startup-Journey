@@ -2,6 +2,7 @@ import { sections } from '../content/siteContent'
 import ProductPanels from './ProductPanels'
 import SolutionHowItWorks from './solution/SolutionHowItWorks'
 import SolutionIntro from './solution/SolutionIntro'
+import SolutionVision from './solution/SolutionVision'
 import WhyWimss from './solution/WhyWimss'
 
 export default function SolutionSection() {
@@ -26,10 +27,12 @@ export default function SolutionSection() {
               {solution.modulesHeading}
             </h3>
             <p className="solution-modules-lead">{solution.modulesLead}</p>
-            <ProductPanels />
+            <ProductPanels operationalAnalytics={solution.operationalAnalytics} />
           </section>
 
           <WhyWimss whyWimss={solution.whyWimss} />
+
+          <SolutionVision vision={solution.vision} />
         </div>
       </div>
     </section>

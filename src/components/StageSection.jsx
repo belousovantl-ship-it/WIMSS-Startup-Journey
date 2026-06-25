@@ -39,7 +39,16 @@ export default function StageSection({ stage }) {
                   <li
                     className={`stage-journey__step stage-journey__step--${step.status}`}
                   >
-                    {step.label}
+                    {step.prefix ? (
+                      <>
+                        <span className="stage-journey__prefix">
+                          {step.prefix}:
+                        </span>{' '}
+                        {step.label}
+                      </>
+                    ) : (
+                      step.label
+                    )}
                   </li>
                   {index < stage.journey.length - 1 && (
                     <li className="stage-journey__arrow" aria-hidden="true" />

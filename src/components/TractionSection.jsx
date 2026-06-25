@@ -50,9 +50,52 @@ function ContactDetails({ contact }) {
   )
 }
 
+function DiscoveryContactsSubrow({ discoveryContacts }) {
+  return (
+    <div className="traction-row__discovery-subrow">
+      <p className="traction-row__discovery-heading">
+        {discoveryContacts.heading}
+      </p>
+      <div className="traction-row__discovery-grid">
+        {discoveryContacts.columns.map((column) => (
+          <div
+            key={column.companies?.[0] ?? column.heading}
+            className="traction-row__discovery-grid-col"
+          >
+            {column.companies ? (
+              <ul className="traction-row__discovery-list">
+                {column.companies.map((item) => (
+                  <li key={item} className="traction-row__discovery-item">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <>
+                <p className="traction-row__discovery-target-heading">
+                  {column.heading}
+                </p>
+                <p className="traction-row__discovery-target-items">
+                  {column.items}
+                </p>
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function TractionRow({ row, columns }) {
   return (
-    <article className="traction-row">
+    <article
+      className={
+        row.discoveryContacts
+          ? 'traction-row traction-row--with-discovery'
+          : 'traction-row'
+      }
+    >
       <div className="traction-row__cell traction-row__cell--category">
         <span className="traction-row__mobile-label">{columns.category}</span>
         <span className="traction-row__category">{row.category}</span>
@@ -94,20 +137,6 @@ function TractionRow({ row, columns }) {
             {note}
           </p>
         ))}
-        {row.discoveryContacts ? (
-          <div className="traction-row__discovery">
-            <p className="traction-row__discovery-heading">
-              {row.discoveryContacts.heading}
-            </p>
-            <ul className="traction-row__discovery-list">
-              {row.discoveryContacts.items.map((item) => (
-                <li key={item} className="traction-row__discovery-item">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
       </div>
       <div className="traction-row__cell traction-row__cell--next-step">
         <span className="traction-row__mobile-label">{columns.nextStep}</span>
@@ -117,6 +146,9 @@ function TractionRow({ row, columns }) {
         <span className="traction-row__mobile-label">{columns.status}</span>
         <span className="traction-row__status-badge">{row.statusTag}</span>
       </div>
+      {row.discoveryContacts ? (
+        <DiscoveryContactsSubrow discoveryContacts={row.discoveryContacts} />
+      ) : null}
     </article>
   )
 }

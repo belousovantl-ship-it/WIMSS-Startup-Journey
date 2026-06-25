@@ -23,16 +23,32 @@ export default function WeeklyUpdates() {
               {entry.date}
             </time>
           </header>
-          <ul className="divide-y divide-line">
-            {entry.items.map((item) => (
-              <li
-                key={item}
-                className="px-5 py-3 text-sm leading-relaxed text-white/75"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+          {entry.items.length > 0 ? (
+            <ul className="divide-y divide-line">
+              {entry.items.map((item) => (
+                <li
+                  key={item}
+                  className="px-5 py-3 text-sm leading-relaxed text-white/75"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {entry.next ? (
+            <p
+              className={
+                entry.items.length > 0
+                  ? 'border-t border-line px-5 py-3 text-sm leading-relaxed text-white/75'
+                  : 'px-5 py-3 text-sm leading-relaxed text-white/75'
+              }
+            >
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent-soft">
+                Next
+              </span>
+              <span className="mt-1 block">{entry.next}</span>
+            </p>
+          ) : null}
         </article>
       ))}
     </div>

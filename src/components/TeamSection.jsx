@@ -49,6 +49,17 @@ export default function TeamSection({ team }) {
             ))}
           </div>
 
+          {team.profilesLink ? (
+            <a
+              href={team.profilesLink.href}
+              className="team-profiles__link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {team.profilesLink.label}
+            </a>
+          ) : null}
+
           <div className="team-support-grid">
             <section
               className="team-panel team-panel--experts"

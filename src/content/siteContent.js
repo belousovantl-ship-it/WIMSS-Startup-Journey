@@ -10,6 +10,10 @@ export const siteMeta = {
   contactEmail: 'info@innotrain.fi',
 }
 
+/** Full Google Docs URL for the draft business plan (Ask · priority 04). */
+export const businessPlanDraftUrl =
+  'https://docs.google.com/document/d/1te_yMk61B7sBj6DEmfWxFiM3yuwjumRy/edit?usp=sharing&ouid=102834796788637439495&rtpof=true&sd=true'
+
 export const hero = {
   statusLine:
     'Real-time operational visibility · Outdoor-first · Industrial intelligence',
@@ -167,37 +171,31 @@ export const sections = {
     id: 'solution',
     label: 'Solution',
     headline:
-      'WIMSS connects industrial reality with digital decision-making in real time.',
+      'WIMSS provides the real-time visibility needed to reduce hidden operational losses and improve operational efficiency.',
     intro: [
-      'WIMSS provides real-time operational visibility of assets, materials, workforce and logistics flows, helping managers see what is where, who is on site, how resources move between operational zones, and where delays, bottlenecks, safety risks or coordination gaps are emerging.',
-      'Live dashboards, alerts, movement history, reports and operational analytics reveal utilisation patterns, recurring bottlenecks, exceptions and operational trends. This enables faster response, better resource allocation, data-driven decisions and AI-supported operational improvement.',
-      'WIMSS works alongside existing ERP, access-control and IT systems, adding the real-time physical visibility and operational intelligence they typically lack rather than replacing them.',
+      'WIMSS helps industrial sites locate assets, materials and equipment when they are needed, reducing search time, unnecessary movement, duplicate purchases and delays caused by missing resources.',
+      'It provides a real-time view of workforce presence, identity and authorised access, and creates virtual geofences around operational zones. This helps teams verify who is on site, control access to restricted areas and identify potential safety or compliance risks.',
+      'By tracking the movement of people, assets and materials across operational zones, WIMSS reveals disruptions, bottlenecks and coordination gaps before they escalate into production delays.',
+      'Live dashboards, alerts, movement history and operational analytics help identify recurring patterns, emerging risks and potential operational issues. This improves predictability, supports better planning and enables faster, more proactive decision-making.',
     ],
     heroImageAlt:
       'WIMSS operator monitoring live operational dashboards with shipyard activity visible through the window behind',
-    capabilities: [
-      {
-        label: 'Find',
-        text: 'Locate assets, materials and equipment when they are needed.',
-      },
-      {
-        label: 'Verify',
-        text: 'Confirm workforce presence, identity and authorised access.',
-      },
-      {
-        label: 'Monitor',
-        text: 'See movements, zones, delays, bottlenecks and exceptions in real time.',
-      },
-      {
-        label: 'Analyse & optimise',
-        text: 'Turn operational data into analytics, insights and AI-supported decisions.',
-      },
-    ],
+    video: {
+      label: 'WIMSS — THE CORE IDEA',
+      lead: 'A 2 minutes introduction to the core principles behind WIMSS and the operational visibility it provides.',
+      youtubeId: '2fdb3kFj8zQ',
+      iframeTitle:
+        'WIMSS — the core idea: operational visibility principles',
+    },
     howItWorks: {
       heading: 'How WIMSS works',
     },
     modulesHeading: 'Core use cases',
     modulesLead: 'One operational picture across workforce and assets.',
+    operationalAnalytics: {
+      heading: 'OPERATIONAL ANALYTICS & OPTIMISATION',
+      text: 'WIMSS turns workforce and asset data into operational insights, trend analysis, risk indicators and AI-supported recommendations. This helps teams improve planning, identify recurring bottlenecks, anticipate potential issues and optimise resource utilisation across the site.',
+    },
     whyWimss: {
       heading: 'Why WIMSS',
       lead: 'Built for fast deployment, industrial reliability and operational scalability.',
@@ -227,6 +225,16 @@ export const sections = {
             'AI-assisted methods improve data reliability in challenging conditions',
         },
       ],
+    },
+    vision: {
+      label: 'Vision & future development',
+      heading: 'From operational visibility to operational intelligence',
+      body: 'WIMSS starts with real-time operational visibility of assets, workforce and zones. Its long-term vision is to evolve into an operational intelligence layer that connects live site data with analytics, AI and future digital twin capabilities — supporting predictive planning, operational optimisation and faster decision-making.',
+      imageSrc: '/images/wimss-vision-digital-twin.png',
+      imageAlt:
+        'WIMSS future operational intelligence and digital twin vision for a connected maritime yard',
+      imageWidth: 1024,
+      imageHeight: 576,
     },
   },
 
@@ -270,10 +278,16 @@ export const sections = {
       },
       {
         id: 'productization',
+        prefix: 'NOW',
         label: 'Productization & customer validation',
         status: 'current',
       },
-      { id: 'pilot', label: 'Next: industrial pilot', status: 'next' },
+      {
+        id: 'pilot',
+        prefix: 'NEXT',
+        label: 'First industrial pilot',
+        status: 'next',
+      },
     ],
     currentFocus: {
       heading: 'Current focus',
@@ -297,7 +311,7 @@ export const sections = {
     pipelineSummary: [
       '2 active shipyard discussions',
       '1 upcoming real-world demonstration',
-      '2 customer discovery surveys in progress',
+      '4 customer discovery surveys in progress',
       '2 international market-access channels opened',
     ],
     columns: {
@@ -347,20 +361,36 @@ export const sections = {
           'Into Seinäjoki has provided WIMSS with a list of regional companies that may be relevant to the solution. It has been agreed that these companies can be contacted before the event to assess their interest in observing the demonstration and participating in further customer discovery.',
         ],
         discoveryContacts: {
-          heading: 'Potential customer discovery contacts',
-          items: [
-            'Atria / Seinäjoki',
-            'Juustoportti / Jalasjärvi',
-            'Valio / Lapua',
-            'HANZA Mechnics / Seinäjoki',
-            'Valmet',
-            'Vaski Group',
-            'MSK Group',
-            'Kometos Oy',
-            'Finn-Power Oy',
-            'Dinolift Oy',
-            'Regional logistics and warehousing companies (Huhtala, Kaukokiito, DB Schenker, Posti Logitiikka, Kiitolinja)',
-            'Agricultural technology manufacturers (Junkkari Oy, Agronic Oy, NHK Group, Farmcomp Oy, Pel-Tuote Oy, Elho Oy)',
+          heading: 'POTENTIAL CUSTOMER DISCOVERY CONTACTS',
+          columns: [
+            {
+              companies: [
+                'Atria / Seinäjoki',
+                'Valio / Lapua',
+                'Valmet',
+                'MSK Group',
+                'Finn-Power Oy',
+              ],
+            },
+            {
+              companies: [
+                'Juustoportti / Jalasjärvi',
+                'HANZA Mechanics / Seinäjoki',
+                'Vaski Group',
+                'Kometos Oy',
+                'Dinolift Oy',
+              ],
+            },
+            {
+              heading: 'REGIONAL LOGISTICS & WAREHOUSING',
+              items:
+                'Huhtala, Kaukokilto, DB Schenker, Posti Logistiikka, Kiitolinja',
+            },
+            {
+              heading: 'AGRICULTURAL TECHNOLOGY MANUFACTURERS',
+              items:
+                'Junkkari Oy, Agronic Oy, NHK Group, Farmcomp Oy, Pel-Tuote Oy, Elho Oy',
+            },
           ],
         },
         nextStep:
@@ -658,6 +688,10 @@ export const sections = {
         phone: '+358 40 518 9542',
       },
     ],
+    profilesLink: {
+      label: 'View detailed team profiles →',
+      href: '/documents/wimss-team-profiles.pdf',
+    },
     expertsOnDemand: {
       heading: 'Experts on demand',
       intro:
@@ -702,92 +736,116 @@ export const sections = {
       {
         id: 'pilot',
         number: '01',
-        title: 'Convert discussions into a pilot',
+        title: 'Convert customer interest into commitment',
         support:
-          'Challenge and improve our pilot approach for RMC, Meyer Turku, West Avia and other active industrial contacts.',
+          'Help us improve our customer-engagement approach. RMC and Meyer Turku have shown interest, reviewed WIMSS materials and requested further work, but progress remains reactive and dependent on their timing. We need to understand what we should do differently to create a structured two-way process with clear feedback, responsibilities and agreed next steps.',
         outcome:
-          'A pilot proposal with a clearly defined use case, site scope, success metrics, timeline, responsibilities and commercial next step.',
+          'A customer meeting with a clear agenda and an agreed next step — such as a completed validation survey, structured discovery workshop, pilot-scoping session or pilot proposal.',
       },
       {
         id: 'buyer',
         number: '02',
-        title: 'Identify the real buyer',
+        title: 'Validate our customer-discovery outreach',
         support:
-          'Help us map the problem owner, decision-maker, economic buyer and budget owner for WIMSS Workforce and WIMSS Assets.',
+          'We have received a list of potentially relevant regional companies through Into Seinäjoki and now have an opportunity to approach them before the West Avia Lab Day. Before starting the outreach, we would like mentors to review and challenge our approach so that we contact the right people, ask the right questions and create a credible reason for them to engage.',
         outcome:
-          'A clear buyer map for shipyards and industrial sites, including the roles most likely to sponsor and approve a pilot.',
-        secondary:
-          'Operations, yard management, logistics, materials, security, HSE, digitalisation and IT.',
+          'A mentor-reviewed outreach plan including target roles, the initial contact message, a clear call to action, the appropriate use of the WIMSS validation survey and a follow-up sequence leading to demonstration attendance or a customer-discovery interview.',
       },
       {
         id: 'pricing',
         number: '03',
-        title: 'Validate pricing & commercial packaging',
+        title: 'Validate our go-to-market focus',
         support:
-          'Review our pilot-to-implementation-to-SaaS model and help define credible early pricing.',
+          'Our current go-to-market entry point is the Finnish shipbuilding and ship-repair sector, where we already have warm contacts and active validation discussions. From there, we see two possible growth paths: expanding into international shipbuilding markets, including Germany and Belgium, or validating adjacent industries in Finland, such as ports, industrial logistics, manufacturing yards and construction.',
+        secondary:
+          'These opportunities are at different stages. Shipbuilding is currently the most validated segment, ports have shown an initial signal of interest, other industrial sectors will be explored through the Seinäjoki network, while construction remains an unvalidated hypothesis. We need mentors to challenge whether we should stay narrowly focused on shipbuilding or begin validating adjacent industries in parallel.',
         outcome:
-          'A practical pricing hypothesis for the paid pilot, implementation, recurring SaaS subscription and site expansion.',
-        outcomeNote:
-          'We especially need guidance on how much to include in a pilot, what should be charged separately and what commercial commitment should follow a successful pilot.',
+          'A prioritised go-to-market roadmap for the next 6–12 months, defining:',
+        outcomeItems: [
+          'the primary beachhead segment;',
+          'whether the next expansion should be geographic or industry-based;',
+          'which adjacent market should be validated first;',
+          'and what evidence should be required before WIMSS invests further time and resources in construction or other new sectors.',
+        ],
+      },
+      {
+        id: 'positioning',
+        number: '04',
+        title: 'Validate our market positioning',
+        support:
+          'Our current market-entry positioning presents WIMSS as a real-time operational visibility solution that addresses concrete and measurable customer problems: hidden losses, search time, limited visibility of assets and workforce, material-flow delays, safety risks and coordination gaps.',
+        secondary:
+          'Our longer-term vision is for WIMSS to evolve into an operational intelligence layer that connects real-world operational data with ERP, IoT and decision-making systems, and later enables AI-driven analytics, predictive planning and digital twin capabilities.',
+        supportLead:
+          'We would like mentors to challenge and validate this two-level positioning:',
+        supportItems: [
+          'Is the current customer promise sufficiently clear, credible and differentiated?',
+          'Does the longer-term vision create a compelling growth story without overstating the maturity of the current product?',
+          'How should we communicate the transition from operational visibility today to operational intelligence in the future?',
+          'Which terminology and claims should be used now, and which should remain part of the product roadmap and long-term vision?',
+        ],
+        outcome: 'A validated positioning framework defining:',
+        outcomeItems: [
+          'the primary customer-facing promise for WIMSS today;',
+          'the operational problems and measurable outcomes that should lead our sales and marketing communication;',
+          'the market category WIMSS should aim to own;',
+          'how the operational intelligence vision should be communicated;',
+          'the role of AI and digital twin capabilities in the product roadmap;',
+          'a clear distinction between current capabilities, planned development and long-term vision.',
+        ],
       },
       {
         id: 'use-case',
-        number: '04',
-        title: 'Prioritise the first commercial use case',
+        number: '05',
+        title: 'Challenge and strengthen our business plan',
         support:
-          'Help us decide which use case creates the fastest and strongest path to measurable customer value.',
-        outcome:
-          'A clear first commercial focus between Workforce and Assets, supported by customer urgency, buying potential, deployment feasibility and reference value.',
-        useCases: [
-          'Workforce presence and contractor verification',
-          'Identity validation and restricted-zone monitoring',
-          'Asset and material search',
-          'Yard logistics and movement visibility',
-          'Zone-level inventory and operational reporting',
+          'We are currently developing the WIMSS business plan and need experienced mentors to critically review its logic, assumptions and internal consistency.',
+        secondary:
+          'We need support in challenging our market focus, customer value proposition, business and revenue model, pricing assumptions, commercialisation path, delivery model, product roadmap and financial projections.',
+        mentorAsk:
+          'We also need to identify which assumptions and claims are sufficiently validated and where additional customer, market or financial evidence is still required.',
+        outcome: 'A mentor-reviewed, fundraising-ready business plan with:',
+        outcomeItems: [
+          'a coherent market and customer strategy;',
+          'a validated business and revenue model;',
+          'credible commercial and financial assumptions;',
+          'a clear product and commercialisation roadmap;',
+          'clearly identified evidence gaps and next validation priorities.',
         ],
+        outcomeLink: {
+          label: 'View draft business plan →',
+          href: businessPlanDraftUrl,
+        },
       },
       {
         id: 'introductions',
-        number: '05',
-        title: 'Open relevant customer doors',
+        number: '06',
+        title: 'Build an investment-readiness roadmap',
         support:
-          'Introduce WIMSS to industrial decision-makers who experience the problems we solve.',
-        outcome:
-          'Warm introductions to relevant contacts at shipyards, ports, repair yards, industrial logistics operations, large construction sites and contractor-heavy industrial environments.',
-        introductions: [
-          'Operations and yard leaders',
-          'Logistics and materials managers',
-          'HSE, security and compliance leaders',
-          'Digitalisation and innovation leaders',
-          'Industrial IT and transformation decision-makers',
+          'The WIMSS team has strong industrial, technology and commercial experience, but no previous experience of raising equity investment.',
+        secondary:
+          'We need support in determining how much capital should be raised at each stage of the company’s development, which operational, commercial and technical milestones each funding round should finance, and how an early-stage industrial technology company should be valued.',
+        mentorAsk:
+          'We also need guidance on what level of equity is reasonable to offer investors, which investment terms and investor rights should be considered, what evidence investors will expect, and how to structure the fundraising process without giving away an excessive share of the company too early.',
+        outcome: 'An investment-readiness roadmap defining:',
+        outcomeItems: [
+          'the required funding stages and capital needs;',
+          'the operational, commercial and technical milestones for each round;',
+          'a credible valuation range and the assumptions behind it;',
+          'an appropriate equity range and key investment terms;',
+          'the materials, metrics and evidence required for investor discussions.',
         ],
       },
-      {
-        id: 'adjacent-markets',
-        number: '06',
-        title: 'Validate adjacent markets',
-        support:
-          'Help us test whether WIMSS has a strong and commercially relevant use case beyond shipyards, particularly in ports, industrial logistics yards and large construction environments.',
-        outcome:
-          'A clear evidence-based decision on which adjacent market should be prioritised after shipyards.',
-        outcomeNote:
-          'Shipyards are currently the most validated beachhead. Ports have shown an initial signal of interest through discussion with a port software provider. Construction remains an unvalidated market hypothesis and requires direct customer interviews and industry access.',
-        mentorAsk:
-          'Warm introductions to construction-industry operations, logistics, site-management and equipment-management decision-makers would be especially valuable.',
-      },
     ],
-    pressingQuestion: {
-      heading: 'Current pressing question',
-      text: 'Which customer, use case and pilot structure should WIMSS prioritise first to create the strongest commercial reference?',
-      supporting:
-        'We want the first pilot to prove measurable value, create a credible customer reference and support repeatable sales to similar industrial sites.',
-    },
     journeyOutcomes: {
       heading: 'What success would look like after this journey',
       items: [
-        'One clearly prioritised beachhead use case',
-        'One industrial pilot proposal under active negotiation',
-        'A validated pricing and go-to-market hypothesis',
+        'One qualified customer opportunity advanced to an agreed next step — discovery workshop, pilot scoping or pilot proposal',
+        'A mentor-reviewed customer-discovery outreach plan with prioritised companies, target roles, messaging and follow-up sequence',
+        'A prioritised 6–12 month go-to-market direction defining the primary segment, the next expansion path and the evidence required before entering adjacent markets',
+        'A validated two-level market positioning: a clear operational visibility promise for customers today and a credible operational intelligence vision for WIMSS’s future development',
+        'A mentor-reviewed, fundraising-ready business plan',
+        'An investment-readiness roadmap covering funding stages, capital needs, milestones, valuation assumptions, equity range and investor requirements',
       ],
     },
   },
@@ -796,24 +854,11 @@ export const sections = {
 /** Weekly mentor updates — add a new entry at the top each week */
 export const weeklyUpdates = [
   {
-    week: 'Week 1',
-    date: '26 May 2026',
-    headline: 'Startup Journey pre-assignment — one-pager live',
-    items: [
-      'Published mentor one-pager with WIMSS Workforce and WIMSS Assets positioning',
-      'Consolidated pilot narratives from RMC and Meyer Turku materials',
-      'Next: confirm pilot KPIs and deployment timeline with active prospects',
-    ],
-  },
-  {
-    week: 'Week 0 (template)',
-    date: '[Date]',
-    headline: '[One-line summary of the week]',
-    items: [
-      '[Key progress or learning]',
-      '[Customer / pilot update]',
-      '[Blocker or decision needed from mentors]',
-    ],
+    week: 'Pre-assignment',
+    date: '25 June 2026',
+    headline: 'WIMSS mentor one-pager completed and submitted',
+    items: [],
+    next: 'Boost Camp',
   },
 ]
 

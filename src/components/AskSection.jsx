@@ -12,6 +12,20 @@ function AskPriorityRow({ priority, columns }) {
         {priority.secondary ? (
           <p className="ask-row__secondary">{priority.secondary}</p>
         ) : null}
+        {priority.supportLead ? (
+          <p className="ask-row__secondary ask-row__support-lead">
+            {priority.supportLead}
+          </p>
+        ) : null}
+        {priority.supportItems ? (
+          <ul className="ask-row__compact-list ask-row__compact-list--support">
+            {priority.supportItems.map((item) => (
+              <li key={item} className="ask-row__compact-item">
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {priority.useCases ? (
           <ul className="ask-row__compact-list">
             {priority.useCases.map((item) => (
@@ -40,8 +54,32 @@ function AskPriorityRow({ priority, columns }) {
       <div className="ask-row__cell ask-row__cell--outcome">
         <span className="ask-row__mobile-label">{columns.outcome}</span>
         <p className="ask-row__body">{priority.outcome}</p>
+        {priority.outcomeItems ? (
+          <ul className="ask-row__compact-list">
+            {priority.outcomeItems.map((item) => (
+              <li key={item} className="ask-row__compact-item">
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {priority.outcomeNote ? (
           <p className="ask-row__secondary">{priority.outcomeNote}</p>
+        ) : null}
+        {priority.outcomeLink?.href ? (
+          <a
+            href={priority.outcomeLink.href}
+            className="ask-row__outcome-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {priority.outcomeLink.label}
+            {!priority.outcomeLink.label.endsWith('→') ? (
+              <span className="ask-row__outcome-link-arrow" aria-hidden="true">
+                ↗
+              </span>
+            ) : null}
+          </a>
         ) : null}
       </div>
     </article>
@@ -97,16 +135,6 @@ export default function AskSection({ ask }) {
               ))}
             </div>
           </div>
-
-          <section className="ask-pressing" aria-label="Current pressing question">
-            <h3 className="ask-pressing__heading">
-              {ask.pressingQuestion.heading}
-            </h3>
-            <p className="ask-pressing__text">{ask.pressingQuestion.text}</p>
-            <p className="ask-pressing__supporting">
-              {ask.pressingQuestion.supporting}
-            </p>
-          </section>
 
           <section className="ask-outcomes" aria-label="Journey outcomes">
             <h3 className="ask-outcomes__heading">

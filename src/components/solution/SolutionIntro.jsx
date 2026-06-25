@@ -1,4 +1,5 @@
 import solutionControlRoom from '../../assets/solution/solution-control-room.png'
+import SolutionVideo from './SolutionVideo'
 
 export default function SolutionIntro({ solution }) {
   return (
@@ -26,14 +27,7 @@ export default function SolutionIntro({ solution }) {
             />
           </div>
 
-          <div className="solution-capabilities">
-            {solution.capabilities.map((capability) => (
-              <div key={capability.label} className="solution-capability">
-                <p className="solution-capability__label">{capability.label}</p>
-                <p className="solution-capability__text">{capability.text}</p>
-              </div>
-            ))}
-          </div>
+          <SolutionVideo video={solution.video} compact />
         </div>
       </div>
     </div>

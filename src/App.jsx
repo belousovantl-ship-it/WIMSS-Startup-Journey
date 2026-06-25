@@ -42,7 +42,7 @@ export default function App() {
           index={9}
           label="Weekly updates"
           title="Progress log for mentors"
-          lead="Add a new entry at the top of siteContent.js each week — this section updates automatically."
+          lead="A concise weekly record of progress, decisions and next steps."
         >
           <WeeklyUpdates />
         </SectionShell>

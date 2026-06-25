@@ -7,34 +7,51 @@ const productImages = {
   assets: useCaseAssets,
 }
 
-export default function ProductPanels() {
+export default function ProductPanels({ operationalAnalytics }) {
   return (
-    <div className="use-cases-grid">
-      {products.map((product) => (
-        <article key={product.id} className="use-case-card">
-          <div className="use-case-card__media">
-            <img
-              src={productImages[product.id]}
-              alt={product.imageAlt}
-              className={`use-case-card__image use-case-card__image--${product.id}`}
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+    <div className="use-cases-suite">
+      <div className="use-cases-grid">
+        {products.map((product) => (
+          <article key={product.id} className="use-case-card">
+            <div className="use-case-card__media">
+              <img
+                src={productImages[product.id]}
+                alt={product.imageAlt}
+                className={`use-case-card__image use-case-card__image--${product.id}`}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-          <div className="use-case-card__body">
-            <h4 className="use-case-card__title">{product.name}</h4>
-            <p className="use-case-card__subtitle">{product.subtitle}</p>
-            <ul className="use-case-card__list">
-              {product.capabilities.map((cap) => (
-                <li key={cap} className="use-case-card__item">
-                  {cap}
-                </li>
-              ))}
-            </ul>
+            <div className="use-case-card__body">
+              <h4 className="use-case-card__title">{product.name}</h4>
+              <p className="use-case-card__subtitle">{product.subtitle}</p>
+              <ul className="use-case-card__list">
+                {product.capabilities.map((cap) => (
+                  <li key={cap} className="use-case-card__item">
+                    {cap}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {operationalAnalytics ? (
+        <div className="use-cases-analytics">
+          <div className="use-cases-analytics__connectors" aria-hidden="true">
+            <span />
+            <span />
           </div>
-        </article>
-      ))}
+          <h4 className="use-cases-analytics__heading">
+            {operationalAnalytics.heading}
+          </h4>
+          <p className="use-cases-analytics__text">
+            {operationalAnalytics.text}
+          </p>
+        </div>
+      ) : null}
     </div>
   )
 }
