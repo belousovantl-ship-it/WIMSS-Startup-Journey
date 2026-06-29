@@ -144,7 +144,18 @@ function TractionRow({ row, columns }) {
       </div>
       <div className="traction-row__cell traction-row__cell--status">
         <span className="traction-row__mobile-label">{columns.status}</span>
-        <span className="traction-row__status-badge">{row.statusTag}</span>
+        <div className="traction-row__status-actions">
+          <span className="traction-row__status-badge">{row.statusTag}</span>
+          {row.updateLink ? (
+            <a
+              href={row.updateLink.href}
+              className="traction-row__update-button"
+              aria-label={row.updateLink.ariaLabel}
+            >
+              View update<span aria-hidden="true"> →</span>
+            </a>
+          ) : null}
+        </div>
       </div>
       {row.discoveryContacts ? (
         <DiscoveryContactsSubrow discoveryContacts={row.discoveryContacts} />

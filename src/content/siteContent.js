@@ -344,8 +344,13 @@ export const sections = {
         currentStatus:
           'Meyer Turku has verbally confirmed that WIMSS is a good fit for the Future Operations focus of the Business Finland co-funded MERiON lead-company programme. WIMSS has not yet been formally selected into the programme, and no pilot agreement has been made.',
         nextStep:
-          'Follow-up meeting scheduled for 30 June 2026 to discuss possible next steps.',
+          'Follow-up meeting scheduled for 29 June 2026 to discuss possible next steps.',
         statusTag: 'Verbal fit confirmation',
+        updateLink: {
+          href: '#update-meyer-merion-2026-06-29',
+          ariaLabel:
+            'View the Meyer Turku and MERiON update from 29 June 2026',
+        },
       },
       {
         id: 'west-avia',
@@ -851,16 +856,81 @@ export const sections = {
   },
 }
 
-/** Weekly mentor updates — add a new entry at the top each week */
+/** Weekly mentor updates — add a new entry at the top each week.
+ *  Assign a stable updateNumber per week (creation order). Newest entry first in entries[]. */
 export const weeklyUpdates = [
   {
-    week: 'Pre-assignment',
+    week: 'Week 1',
+    date: '29 June 2026',
+    anchorId: 'updates-week-1',
+    entries: [
+      {
+        id: 'meyer-turku-merion',
+        updateNumber: 2,
+        anchorId: 'update-meyer-merion-2026-06-29',
+        headline: 'Meyer Turku / MeriOn ecosystem',
+        status: 'Strong interest and new ecosystem opportunities',
+        statusBadge: 'New opportunity',
+        statusBadgeTone: 'positive',
+        update: [
+          'A follow-up meeting with Ilkka Rytkölä 29.6.2026 confirmed strong interest in WIMSS.',
+          'WIMSS is being considered as a potential participant in the renewed MeriOn consortium funding application.',
+          'WIMSS was invited to present at MeriCafe, a Finnish maritime innovation network bringing together approximately 50 industry companies and stakeholders, and to participate in the European SeaCafe collaboration network.',
+        ],
+        pilotOpportunity: [
+          'Meyer Turku referred WIMSS to Shipbuilding Completion Oy.',
+          'We received the contact details of CEO Päivi Haikkola and a recommendation to approach her using Ilkka Rytkölä as a reference.',
+          'This creates a potential opportunity to test WIMSS in a real operational environment on the company’s warehouse and operational area located inside the Meyer Turku shipyard.',
+        ],
+        nextSteps: [
+          'Contact Päivi Haikkola and refer to Ilkka Rytkölä.',
+          'Explore the feasibility and scope of a real-life pilot.',
+          'Prepare WIMSS for the MeriCafe presentation.',
+          'Follow up on potential participation in the renewed MeriOn consortium application.',
+        ],
+      },
+      {
+        id: 'apilago-pitching',
+        updateNumber: 1,
+        headline: 'Apilago Pitching Competition',
+        status: 'Application not selected',
+        statusBadge: 'Feedback to be requested',
+        statusBadgeTone: 'neutral',
+        update: [
+          'WIMSS applied to the Maritime Solutions track of the Apilago Pitching Competition connected with the Apilago Initiative event on 19–20 August 2026.',
+          'On 29 June 2026, we received confirmation that WIMSS was not selected to continue in the competition.',
+        ],
+        next:
+          'Send a follow-up message requesting feedback on the application and selection decision, if available. Use the feedback to understand whether the application, market fit, maturity level or presentation of the opportunity should be improved for future competitions and funding applications.',
+      },
+    ],
+  },
+  {
+    week: 'Pre-program boostcamp',
+    headline: 'WIMSS participated in the Startup Journey Boostcamp',
+    items: [],
+  },
+  {
+    week: 'One-pager pre-assignment',
     date: '25 June 2026',
     headline: 'WIMSS mentor one-pager completed and submitted',
     items: [],
-    next: 'Boost Camp',
   },
 ]
+
+/** First week-group in weeklyUpdates is the current active week (newest first). */
+export function getActiveWeeklyUpdateNav() {
+  const activeWeek = weeklyUpdates.find((item) => Array.isArray(item.entries))
+
+  if (!activeWeek) {
+    return { href: '#updates', count: 0 }
+  }
+
+  return {
+    href: activeWeek.anchorId ? `#${activeWeek.anchorId}` : '#updates',
+    count: activeWeek.entries.length,
+  }
+}
 
 export const navSections = [
   { id: 'problem', label: 'Problem' },

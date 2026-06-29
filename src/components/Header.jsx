@@ -1,7 +1,7 @@
-import { navSections, siteMeta } from '../content/siteContent'
+import { getActiveWeeklyUpdateNav, navSections, siteMeta } from '../content/siteContent'
 import useActiveSection from '../hooks/useActiveSection'
 
-function NavLink({ href, label, isActive, accent = false }) {
+function NavLink({ href, label, isActive, accent = false, badgeCount }) {
   return (
     <a
       href={href}
@@ -10,7 +10,14 @@ function NavLink({ href, label, isActive, accent = false }) {
       }`}
       aria-current={isActive ? 'true' : undefined}
     >
-      {label}
+      <span className="nav-link__label-wrap">
+        <span>{label}</span>
+        {badgeCount != null && badgeCount > 0 ? (
+          <span className="nav-link__update-count" aria-hidden="true">
+            {badgeCount}
+          </span>
+        ) : null}
+      </span>
     </a>
   )
 }
@@ -18,6 +25,7 @@ function NavLink({ href, label, isActive, accent = false }) {
 export default function Header() {
   const sectionIds = navSections.map((item) => item.id)
   const activeId = useActiveSection(sectionIds)
+  const activeUpdateNav = getActiveWeeklyUpdateNav()
 
   return (
     <header className="site-header sticky top-0 z-50 border-b-2 border-accent">
@@ -39,10 +47,17 @@ export default function Header() {
           {navSections.map((item) => (
             <NavLink
               key={item.id}
-              href={`#${item.id}`}
+              href={
+                item.id === 'updates'
+                  ? activeUpdateNav.href
+                  : `#${item.id}`
+              }
               label={item.label}
               isActive={activeId === item.id}
               accent={item.id === 'updates'}
+              badgeCount={
+                item.id === 'updates' ? activeUpdateNav.count : undefined
+              }
             />
           ))}
         </nav>
