@@ -861,9 +861,89 @@ export const sections = {
 export const weeklyUpdates = [
   {
     week: 'Week 1',
-    date: '29 June 2026',
+    date: '29 June–5 July 2026',
     anchorId: 'updates-week-1',
     entries: [
+      {
+        id: 'west-avia-lab-day-preparation',
+        updateNumber: 6,
+        anchorId: 'update-west-avia-preparation-2026-07-05',
+        date: '5 July 2026',
+        headline: 'West Avia Lab Day preparation and cross-industry outreach underway',
+        status: 'Demonstration planning continues together with organisers and potential industry participants',
+        statusBadge: 'Preparation in progress',
+        statusBadgeTone: 'neutral',
+        update: [
+          'Preparation continues for the West Avia Lab Day, taking place at Seinäjoki Airport on 19 August 2026.',
+          'WIMSS is coordinating with the event organisers to define the demonstration scenario, practical arrangements and the most relevant industrial use cases to present during the event.',
+        ],
+        customerDiscoveryOpportunity: [
+          'The event also creates an opportunity to validate WIMSS with companies representing several different industries.',
+          'WIMSS plans to contact selected companies identified through the organisers to assess their interest in observing the demonstration, discussing their operational visibility challenges and participating in further customer-discovery interviews.',
+        ],
+        officialLink: {
+          label: 'View the West Avia Lab Day event →',
+          href: 'https://tapahtumat.intoseinajoki.fi/labrapaiva?tab=1#main-content',
+        },
+      },
+      {
+        id: 'edr-antwerp-validation',
+        updateNumber: 5,
+        anchorId: 'update-edr-antwerp-2026-07-02',
+        date: '2 July 2026',
+        headline: 'International customer validation launched with EDR Antwerp Shipyard',
+        status: 'First international cold call resulted in strong customer interest',
+        statusBadge: 'Strong interest',
+        statusBadgeTone: 'positive',
+        strategicDecision: [
+          'As many Finnish industrial decision-makers are unavailable during the summer holiday period, WIMSS decided to use July to expand customer validation internationally.',
+          'The first target markets selected for this outreach are Belgium and the Netherlands, where there is a significant concentration of shipyards and maritime industry companies.',
+        ],
+        customerValidation: [
+          'On 2 July 2026, WIMSS made its first international cold call to EDR Antwerp Shipyard.',
+          'The discussion was held with the shipyard’s Logistics Manager, who immediately recognised the operational visibility problems addressed by WIMSS and confirmed that the company has been looking for a suitable solution.',
+          'The contact showed strong interest and requested the WIMSS presentation and introductory video, which were sent after the call.',
+        ],
+        nextSteps: [
+          'Hold a follow-up call with EDR Antwerp Shipyard on Monday, 6 July 2026.',
+          'Continue customer-validation outreach to shipyards in Belgium and the Netherlands.',
+        ],
+      },
+      {
+        id: 'turku-repair-yard-follow-up',
+        updateNumber: 4,
+        anchorId: 'update-turku-repair-yard-2026-07-01',
+        date: '1 July 2026',
+        headline: 'Turku Repair Yard validation follow-up postponed until after the summer holidays',
+        status: 'Initial contact established, but key decision-makers are currently unavailable',
+        statusBadge: 'Follow-up in August',
+        statusBadgeTone: 'neutral',
+        update: [
+          'WIMSS contacted Turku Repair Yard as part of its customer-validation work in the Finnish ship-repair sector.',
+          'A discussion was held with the Technical Manager. The interest is there. However WIMSS was asked to reconnect after the holiday season, when the relevant team members are available again.',
+        ],
+      },
+      {
+        id: 'merion-application-submitted',
+        updateNumber: 3,
+        anchorId: 'update-merion-application-2026-07-02',
+        date: '2 July 2026',
+        headline: 'Meyer Turku MERiON ecosystem application submitted',
+        status: 'WIMSS has applied to join the newly opened MERiON ecosystem',
+        statusBadge: 'Application submitted',
+        statusBadgeTone: 'positive',
+        update: [
+          'Meyer Turku announced that applications to join the renewed MERiON ecosystem are now open.',
+          'Following the earlier discussions with Ilkka Rytkölä and the confirmation that WIMSS is a good fit for the programme’s Future Operations focus, WIMSS submitted its ecosystem application on 2 July 2026.',
+        ],
+        whyItMatters: [
+          'Participation in MERiON could connect WIMSS with Meyer Turku, maritime industry partners and development projects focused on the future of shipyard operations.',
+        ],
+        officialLink: {
+          label: 'View the MERiON programme →',
+          href: 'https://www.meyerturku.fi/fi/tuotteet-teknologia/merion/',
+        },
+      },
       {
         id: 'meyer-turku-merion',
         updateNumber: 2,
