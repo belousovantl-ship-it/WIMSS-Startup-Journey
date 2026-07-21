@@ -860,9 +860,135 @@ export const sections = {
  *  Assign a stable updateNumber per week (creation order). Newest entry first in entries[]. */
 export const weeklyUpdates = [
   {
-    week: 'Week 1',
+    week: 'WEEK 4',
+    date: '13–19 July 2026',
+    anchorId: 'updates-week-4',
+    entries: [
+      {
+        id: 'customer-demo-dashboard-development',
+        updateNumber: 1,
+        anchorId: 'update-customer-demo-dashboard-2026-07-19',
+        headline: 'Customer demonstration dashboard under development',
+        status:
+          'Preparing WIMSS for industrial demonstrations and customer negotiations',
+        statusBadge: 'PRODUCT DEVELOPMENT',
+        statusBadgeTone: 'neutral',
+        sections: [
+          {
+            label: 'Update',
+            paragraphs: [
+              'Week 4 is focused on developing the WIMSS demonstration dashboard.',
+              'The dashboard is being prepared both for the West Avia Lab Day demonstration and as a professional customer demonstration platform for meetings with shipyards and future industrial customers.',
+            ],
+          },
+          {
+            label: 'Development focus',
+            paragraphs: [
+              'Current work includes creating realistic industrial scenarios, refining the user experience, improving demonstration workflows and ensuring that the dashboard clearly communicates the operational value of WIMSS during customer meetings.',
+            ],
+          },
+          {
+            label: 'Why it matters',
+            paragraphs: [
+              'A consistent demonstration platform strengthens customer discussions, pilot negotiations and future sales activities by presenting WIMSS in a professional and repeatable way.',
+            ],
+          },
+          {
+            label: 'Next steps',
+            type: 'list',
+            items: [
+              'Complete the demonstration dashboard.',
+              'Finalise the West Avia demonstration scenario.',
+              'Prepare the dashboard for customer presentations.',
+              'Continue improving the product based on customer feedback.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    week: 'WEEK 3',
+    date: '6–12 July 2026',
+    anchorId: 'updates-week-3',
+    entries: [
+      {
+        id: 'international-shipyard-validation',
+        updateNumber: 1,
+        anchorId: 'update-international-shipyard-validation-2026-07-12',
+        headline: 'International shipyard validation and market qualification',
+        status:
+          'Customer discovery expanded across Finland, Belgium and the Netherlands',
+        statusBadge: 'CUSTOMER VALIDATION',
+        statusBadgeTone: 'neutral',
+        sections: [
+          {
+            label: 'Update',
+            paragraphs: [
+              'Week 3 focused on direct customer validation with shipyards in Finland, Belgium and the Netherlands.',
+              'Approximately fifteen shipyards were contacted to validate operational problems, identify decision-makers and assess commercial interest in WIMSS.',
+            ],
+          },
+          {
+            label: 'Customer validation results',
+            paragraphs: [
+              'Customer validation confirmed continued interest from several Finnish shipyards.',
+              'Active discussions or ongoing follow-up now exist with:',
+              'Meyer Turku',
+              'Rauma Marine Constructions',
+              'Turku Repair Yard',
+              'Työvene Oy',
+              'Helsinki Shipyard',
+              'SATA Shipbuilding remains the main Finnish shipyard still to be contacted.',
+            ],
+          },
+          {
+            label: 'Belgium',
+            paragraphs: [
+              'The first international customer-validation discussions produced encouraging results.',
+              'EDR Antwerp Shipyard immediately recognised the operational problems addressed by WIMSS and requested the presentation materials and introductory video.',
+              'Helsinki Shipyard also expressed interest in reviewing the WIMSS sales materials. While the operational pain appears less acute than at some other shipyards, the company remains a promising potential customer.',
+            ],
+          },
+          {
+            label: 'The Netherlands',
+            paragraphs: [
+              'Customer outreach confirmed that the Dutch shipbuilding market is significantly more difficult to access because of strong gatekeeping around decision-makers.',
+              'The current conclusion is that warm introductions through industry networks or direct meetings at SMM Hamburg are likely to be the most effective approach.',
+            ],
+          },
+          {
+            label: 'Additional market validation',
+            paragraphs: [
+              'A review was carried out to determine whether subcontractors operating inside the Meyer Turku shipyard could represent an additional customer segment.',
+              'The initial assessment indicates that companies such as Ramirent and Rexel are not suitable target customers for WIMSS under the current business model.',
+            ],
+          },
+          {
+            label: 'Outcome',
+            paragraphs: [
+              'Week 3 strengthened confidence that shipbuilding remains the primary beachhead market for WIMSS while also providing valuable insight into how customer acquisition differs between Finland, Belgium and the Netherlands.',
+            ],
+          },
+          {
+            label: 'Next steps',
+            type: 'list',
+            items: [
+              'Continue follow-up discussions with Finnish shipyards.',
+              'Hold the scheduled follow-up with EDR Antwerp Shipyard.',
+              'Continue Belgian market validation.',
+              'Prepare networking activities for SMM Hamburg.',
+              'Contact SATA Shipbuilding.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    week: 'WEEK 2',
     date: '29 June–5 July 2026',
-    anchorId: 'updates-week-1',
+    anchorId: 'updates-week-2',
     entries: [
       {
         id: 'west-avia-lab-day-preparation',
@@ -986,7 +1112,7 @@ export const weeklyUpdates = [
     ],
   },
   {
-    week: 'Pre-program boostcamp',
+    week: 'WEEK 1',
     headline: 'WIMSS participated in the Startup Journey Boostcamp',
     items: [],
   },

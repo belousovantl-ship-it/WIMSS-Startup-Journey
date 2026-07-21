@@ -42,6 +42,23 @@ function UpdateSection({ label, children }) {
   )
 }
 
+function UpdateSectionContent({ section }) {
+  if (section.type === 'list') {
+    return (
+      <ul className="week-entry-card__list">
+        {section.items.map((item) => (
+          <li key={item} className="week-entry-card__list-item">
+            <span className="week-entry-card__list-bullet" aria-hidden="true" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  return <UpdateParagraphs paragraphs={section.paragraphs ?? []} />
+}
+
 function WeekEntryCard({ entry, weekLabel, isLatest }) {
   const updateLabel = `Update ${String(entry.updateNumber).padStart(2, '0')}`
 
@@ -78,6 +95,14 @@ function WeekEntryCard({ entry, weekLabel, isLatest }) {
       </header>
 
       <div className="week-entry-card__body">
+        {entry.sections?.length
+          ? entry.sections.map((section) => (
+              <UpdateSection key={section.label} label={section.label}>
+                <UpdateSectionContent section={section} />
+              </UpdateSection>
+            ))
+          : null}
+
         {entry.update?.length ? (
           <UpdateSection label="Update">
             <UpdateParagraphs paragraphs={entry.update} />
